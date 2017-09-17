@@ -1,0 +1,48 @@
+<template name="Home">
+    <div class="my-container">
+        <div class="my-wrapper">
+            <div class="my-table">
+                <div class="table-row">
+                    <div class="table-cell">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell">
+                        <button type="button" class="btn btn-primary my-button"
+                                id="encrypt">Encrypt
+                        </button>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-cell">
+                        <button type="button" class="btn btn-primary my-button"
+                                id="decrypt">Decrypt
+                        </button>
+                    </div>
+                </div>
+                {{#if token}}
+                    <div class="table-row">
+                        <div class="table-cell">
+                            Token: {{token}}
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if decryptedPassword}}
+                    <div class="table-row">
+                        <div class="table-cell">
+                            Password: {{decryptedPassword}}
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
