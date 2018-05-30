@@ -85,6 +85,7 @@ function successCallback(result) {
 
 function errorCallback(message) {
     console.log("errorCallback(): " + message);
+    alert(message);
 }
 
 function isAvailableSuccess(isAvailable) {
@@ -97,16 +98,16 @@ function isAvailableSuccess(isAvailable) {
             clientId: "myAppName",
             username: username,
             password: password,
-            disableBackup: false,
-            userAuthRequired: false
+            disableBackup: true,
+            userAuthRequired: true
         }, successCallback, errorCallback);
     } else if (cipherMode === "decrypt") {
         FingerprintAuth.decrypt({
             clientId: "myAppName",
             username: username,
             token: Session.get("token"),
-            disableBackup: false,
-            userAuthRequired: false
+            disableBackup: true,
+            userAuthRequired: true
         }, successCallback, errorCallback);
     }
 }

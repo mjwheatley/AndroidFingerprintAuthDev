@@ -55,7 +55,7 @@ App.setPreference('android-minSdkVersion', '23');
 App.setPreference('android-targetSdkVersion', '23');
 
 // Dev
-App.accessRule('http://localhost:3000/*')
+App.accessRule('http://localhost:3000/*');
 App.accessRule('https://localhost:3000/*');
 App.accessRule('http://meteor.local');
 App.accessRule('http://10.0.2.2:3000/*');
