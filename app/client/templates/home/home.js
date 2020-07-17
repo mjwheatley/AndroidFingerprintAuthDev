@@ -57,13 +57,11 @@ Template.Home.events({
     },
     'click #encrypt': function () {
         Session.set("cipherMode", "encrypt");
-        // FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
-        isAvailableSuccess(true);
+        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
     },
     'click #decrypt': function () {
         Session.set("cipherMode", "decrypt");
-        // FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
-        isAvailableSuccess(true);
+        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
     }
 });
 
@@ -99,7 +97,7 @@ function isAvailableSuccess(isAvailable) {
             username: username,
             password: password,
             disableBackup: true,
-            userAuthRequired: true
+            userAuthRequired: false
         }, successCallback, errorCallback);
     } else if (cipherMode === "decrypt") {
         FingerprintAuth.decrypt({
@@ -107,9 +105,17 @@ function isAvailableSuccess(isAvailable) {
             username: username,
             token: Session.get("token"),
             disableBackup: true,
-            userAuthRequired: true
+            userAuthRequired: false
         }, successCallback, errorCallback);
     }
+
+    setTimeout(function () {
+        FingerprintAuth.dismiss(function (result) {
+            console.log("Dismiss result: " + result);
+        }, function(error) {
+            console.log("Dismiss error: " + error);
+        });
+    }, 5000);
 }
 
 function isAvailableError(message) {
